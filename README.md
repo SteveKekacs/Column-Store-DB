@@ -11,7 +11,7 @@ Implements basic functionality of a main memory column store database including:
   * Fetches
   * Aggregates
   * Persistence
- 
+
 Also explores several more advance database techniques including:
 * Scan Sharing
 * Multithreaded Scans
@@ -21,7 +21,7 @@ Also explores several more advance database techniques including:
 * Joins
   * Cache Conscious Nested-Loop
   * Grace Hash
-  
-For a full write-up, please see report.pdf.
+
+For a full write-up, please see https://github.com/Skekacs93/Column-Store-DB/blob/master/report.pdf.
 
 
