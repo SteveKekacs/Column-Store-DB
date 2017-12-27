@@ -754,18 +754,18 @@ int** execute_shared_scan(Comparator* comparators, int* data, int* indices, Resu
     long* min = NULL;
     long* max = NULL;
     for (size_t i = 0; i < num_queries; i++) {
-    	if (comparators[i].type1 != NO_COMPARISON && (min == NULL || *min > comparators[i].p_low))
-    		min = &comparators[i].p_low;
-    	if (comparators[i].type2 != NO_COMPARISON && (max == NULL || *max < comparators[i].p_high))
-    		max = &comparators[i].p_high;
+        if (comparators[i].type1 != NO_COMPARISON && (min == NULL || *min > comparators[i].p_low))
+            min = &comparators[i].p_low;
+        if (comparators[i].type2 != NO_COMPARISON && (max == NULL || *max < comparators[i].p_high))
+            max = &comparators[i].p_high;
     }
 
     if (min == NULL) {
-    	*min = INT_MIN;
+        *min = INT_MIN;
     }
 
     if (max == NULL) {
-    	*max = INT_MAX;
+        *max = INT_MAX;
     }
 
     // init num_results_array and ret_indices_array
@@ -782,7 +782,7 @@ int** execute_shared_scan(Comparator* comparators, int* data, int* indices, Resu
             val = data[i];
 
             if (val < *min || val > *max) {
-            	continue;
+                continue;
             }
 
             for (num_query=0; num_query < num_queries; num_query++) {
@@ -797,7 +797,7 @@ int** execute_shared_scan(Comparator* comparators, int* data, int* indices, Resu
             val = data[i];
 
             if (val < *min || val > *max) {
-            	continue;
+                continue;
             }
 
             for (num_query=0; num_query < num_queries; num_query++) {
@@ -922,7 +922,7 @@ void* shared_select_chunk_wrapper(void* context) {
         val2 = data[i + 1];
 
         if ((val < *min || val > *max) && (val2 < *min || val2 > *max))
-        	continue;
+            continue;
 
         for (int num_query=0; num_query < num_batched_queries; num_query++) {
             ret_indices_array[num_query][num_results_array[num_query]] = i;
@@ -1581,7 +1581,7 @@ void execute_batched_queries(Status* status) {
         // else parallelize queries
         // this splits the queries in groups of 4 and parallelizes their processing
         } else if (0) {
-        	int query_chunk_size = 6;
+            int query_chunk_size = 6;
 
             // allocatx space for threads
             size_t num_threads = num_batched_queries / query_chunk_size;
@@ -1638,25 +1638,25 @@ void execute_batched_queries(Status* status) {
             Comparator* comparators = malloc(sizeof(Comparator) * num_batched_queries);
 
             long* min = NULL;
-    		long* max = NULL;
+            long* max = NULL;
 
             for (int num_q = 0; num_q < num_batched_queries; num_q++) {
                 comparators[num_q] = batched_queries[num_q]->operator_fields.select_operator.comparator;
 
-				if (comparators[num_q].type1 != NO_COMPARISON && (min == NULL || *min > comparators[num_q].p_low))
-	    			min = &comparators[num_q].p_low;
+                if (comparators[num_q].type1 != NO_COMPARISON && (min == NULL || *min > comparators[num_q].p_low))
+                    min = &comparators[num_q].p_low;
 
-	    		if (comparators[num_q].type2 != NO_COMPARISON && (max == NULL || *max < comparators[num_q].p_high))
-	    			max = &comparators[num_q].p_high;
+                if (comparators[num_q].type2 != NO_COMPARISON && (max == NULL || *max < comparators[num_q].p_high))
+                    max = &comparators[num_q].p_high;
             }
 
             // check for null min/max
-		    if (min == NULL) {
-		    	*min = INT_MIN;
-		    }
-		    if (max == NULL) {
-		    	*max = INT_MAX;
-		    }
+            if (min == NULL) {
+                *min = INT_MIN;
+            }
+            if (max == NULL) {
+                *max = INT_MAX;
+            }
 
             // initialize list to hold results
             all_results = calloc(num_threads, sizeof(int*));
@@ -1707,8 +1707,8 @@ void execute_batched_queries(Status* status) {
                         curr_counts[num_q] += thread_num_tuples;
                     }
                 }
-	        	free(all_results[num_thread]);
-	            free(all_results_counts[num_thread]);
+                free(all_results[num_thread]);
+                free(all_results_counts[num_thread]);
             }
 
             // free memory

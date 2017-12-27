@@ -4,23 +4,23 @@
  * Simple structs for thread function paramaters
  **/
 typedef struct sharedSelectParams {
-	DbOperator** queries;
-	size_t num_queries;
-	Status* status;
+    DbOperator** queries;
+    size_t num_queries;
+    Status* status;
 } sharedSelectParams;
 
 typedef struct selectParams {
-	DbOperator* query;
-	Status* status;
+    DbOperator* query;
+    Status* status;
 } selectParams;
 
 typedef struct chunkedParams {
-	Comparator* comparators;
-	int num_items;
-	int* data;
-	int num_thread;
-	long* min;
-	long* max;
+    Comparator* comparators;
+    int num_items;
+    int* data;
+    int num_thread;
+    long* min;
+    long* max;
 } chunkedParams;
 
 
