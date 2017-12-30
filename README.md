@@ -12,7 +12,7 @@ Implements basic functionality of a main memory column store database including:
   * Aggregates
   * Persistence
 
-Also explores several more advance database techniques including:
+Also explores several more advanced database techniques including:
 * Scan Sharing
 * Multithreaded Scans
 * Indexing
