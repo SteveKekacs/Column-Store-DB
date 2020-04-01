@@ -22,6 +22,6 @@ Also explores several more advanced database techniques including:
   * Cache Conscious Nested-Loop
   * Grace Hash
 
-For a full write-up, please see https://github.com/SteveKekacs/Column-Store-DB/blob/master/report.pdf.
+For a full write-up, please see https://github.com/SteveKekacs/Column-Store-DB/blob/master/report/report.pdf.
 
 
